@@ -14,3 +14,8 @@ async def on_ready():
     except Exception as e: 
         print({e})
         
+        
+@tree.command(name = "blacklist")
+async def blacklist(interaction : discord.Interaction,discord_user : str,discord_id  : int ,reason : str, roblox_user : str = "N/A",roblox_id : int = 000000000,roblox_link : str = "N/A", blacklistdoc : str ="coming soon"):
+    blacklistembed  = discord.Embed(title="**New blacklist**")
+    blacklistembed.add_field(name=None,value=f"reason for black list : {reason}\n\n\n\n discord user : {discord_user}")
