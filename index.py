@@ -17,8 +17,10 @@ async def on_ready():
         
 @tree.command(name = "blacklist")
 async def blacklist(interaction : discord.Interaction,discord_user : str,discord_id  : discord.User,reason : str, roblox_user : str = "N/A",roblox_id : int = 000000000,roblox_link : str = "N/A", blacklistdoc : str ="coming soon",ping : str = None):
-    await discord_id.ban(reason=reason)
-    blacklistembed  = discord.Embed(title="**New blacklist**",color=discord.Color.from_rgb(0,0,0))
+    guild = interaction.guild
+    member = guild.get_member(discord_id)
+    await member.ban(reason=reason)
+    blacklistembed  = discord.Embed(title="**New blacklist**",color=discord.Color.from_rgb())
     blacklistembed.add_field(name=None,value=f"reason for black list : {reason}\n\n\n\n discord user : {discord_user}\n discord id : {discord_id}\n\n,Roblox user : {roblox_user}\n,roblox id : {roblox_id}\n\n\n roblox profile : {roblox_link}\n,black list doc : {blacklistdoc}")
     interaction.channel.send({ping},embed=blacklistembed)
 
